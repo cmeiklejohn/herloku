@@ -3,3 +3,4 @@ rel/
 dev/
 ebin/
 *.dump
+priv/log
