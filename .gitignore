@@ -1,0 +1,5 @@
+deps/*
+rel/
+dev/
+ebin/
+*.dump
