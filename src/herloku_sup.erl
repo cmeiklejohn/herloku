@@ -42,12 +42,13 @@ upgrade() ->
 %% @doc supervisor callback.
 init([]) ->
     Ip = case os:getenv("WEBMACHINE_IP") of false -> "0.0.0.0"; Any -> Any end,
+    Port = list_to_integer(os:getenv("PORT")),
     {ok, App} = application:get_application(?MODULE),
     {ok, Dispatch} = file:consult(filename:join([code:priv_dir(App),
                                                  "dispatch.conf"])),
     WebConfig = [
                  {ip, Ip},
-                 {port, 8000},
+                 {port, Port},
                  {log_dir, "priv/log"},
                  {dispatch, Dispatch}],
     Web = {webmachine_mochiweb,
